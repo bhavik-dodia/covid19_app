@@ -1,9 +1,8 @@
 import 'dart:convert';
-
-import 'package:covid19_app/app/services/endpoint_data.dart';
+import 'package:covid19_app/services/endpoint_data.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'package:covid19_app/app/services/api.dart';
+import 'package:covid19_app/services/api.dart';
 
 class APIService {
   APIService(this.api);

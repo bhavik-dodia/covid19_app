@@ -1,4 +1,4 @@
-import 'package:covid19_app/app/services/api_keys.dart';
+import 'package:covid19_app/services/api_keys.dart';
 import 'package:flutter/foundation.dart';
 
 enum Endpoint {

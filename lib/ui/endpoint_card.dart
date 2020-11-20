@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:intl/intl.dart';
-import 'package:covid19_app/app/services/api.dart';
+import 'package:covid19_app/services/api.dart';
 import 'package:flutter/material.dart';
 
 class EndpointCardData {
