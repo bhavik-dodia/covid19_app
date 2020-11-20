@@ -1,6 +1,10 @@
 import 'package:covid19_app/app/services/api.dart';
 import 'package:covid19_app/app/services/api_service.dart';
+import 'package:covid19_app/app/ui/dashboard.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'app/repositories/data_repository.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,59 +13,21 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  String _accessToken = '';
-
-  Future<void> _updateAccessToken() async {
-    final apiService = APIService(API.sandbox());
-    final accessToken = await apiService.getAccessToken();
-    setState(() => _accessToken = accessToken);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_accessToken',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+    return Provider<DataRepository>(
+      create: (_) => DataRepository(apiService: APIService(API.sandbox())),
+      child: MaterialApp(
+        title: 'Coronavirus Tracker',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          accentColor: Colors.blueAccent,
+          primaryColor: Colors.blueAccent,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _updateAccessToken,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+        darkTheme: ThemeData.dark().copyWith(accentColor: Colors.blueAccent,
+          primaryColor: Colors.blueAccent,
+          visualDensity: VisualDensity.adaptivePlatformDensity,),
+        home: Dashboard(),
       ),
     );
   }
