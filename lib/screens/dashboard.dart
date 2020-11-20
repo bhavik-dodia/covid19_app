@@ -3,9 +3,9 @@ import 'dart:ui';
 import 'package:covid19_app/repositories/data_repository.dart';
 import 'package:covid19_app/repositories/endpoints_data.dart';
 import 'package:covid19_app/services/api.dart';
-import 'package:covid19_app/ui/endpoint_card.dart';
-import 'package:covid19_app/ui/last_updated_status_text.dart';
-import 'package:covid19_app/ui/show_alert_dialog.dart';
+import 'package:covid19_app/screens/endpoint_card.dart';
+import 'package:covid19_app/screens/last_updated_status_text.dart';
+import 'package:covid19_app/screens/show_alert_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

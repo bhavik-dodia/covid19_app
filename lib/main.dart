@@ -1,7 +1,7 @@
 import 'package:covid19_app/services/api.dart';
 import 'package:covid19_app/services/api_service.dart';
 import 'package:covid19_app/services/data_cache_service.dart';
-import 'package:covid19_app/ui/dashboard.dart';
+import 'package:covid19_app/screens/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
