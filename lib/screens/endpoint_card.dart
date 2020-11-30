@@ -29,11 +29,6 @@ class EndpointCard extends StatelessWidget {
         EndpointCardData('Recovered', 'assets/patient.png', Colors.greenAccent),
   };
 
-  String get formattedValue {
-    if (value == null) return '';
-    return NumberFormat('#,##,##,###').format(value);
-  }
-
   @override
   Widget build(BuildContext context) {
     final cardData = _cardsData[endpoint];
@@ -59,13 +54,18 @@ class EndpointCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image.asset(cardData.assetName, color: cardData.color),
-                  Text(
-                    formattedValue,
-                    style: TextStyle(
-                        fontSize: 30.0,
-                        color: cardData.color,
-                        fontWeight: FontWeight.w500),
-                  ),
+                  TweenAnimationBuilder(
+                      tween: IntTween(begin: 0, end: value),
+                      duration: const Duration(seconds: 1),
+                      builder: (BuildContext context, int i, Widget child) {
+                        return Text(
+                          NumberFormat('#,##,##,###').format(i),
+                          style: TextStyle(
+                              fontSize: 30.0,
+                              color: cardData.color,
+                              fontWeight: FontWeight.w500),
+                        );
+                      })
                 ],
               ),
             ),
